@@ -1,0 +1,54 @@
+
+
+
+<html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Telegram-style Registration and Login</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<script>
+  // Get this URL and Publishable Key from the Clerk Dashboard
+  const clerkFrontendApi = 'pk_[publishable_key]';
+  const frontendApi = '[your-domain].clerk.accounts.dev';
+  const version = '@latest'; // Set to appropriate version
+ 
+  // Creates asynchronous script
+  const script = document.createElement('script');
+  script.setAttribute('data-clerk-frontend-api', frontendApi);
+  script.setAttribute('data-clerk-publishable-key', clerkFrontendApi);
+  script.async = true;
+  script.src = `https://${frontendApi}/npm/@clerk/clerk-js${version}/dist/clerk.browser.js`;
+ 
+  // Adds listener to initialize ClerkJS after it's loaded
+  script.addEventListener('load', async function () {
+    await window.Clerk.load({
+      // Set load options here...
+    });
+  });
+  document.body.appendChild(script);
+</script>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1 class="title">Telegram-style Registration and Login</h1>
+      <ul class="links">
+        <li><a href="registration.html">Register</a></li>
+        <li><a href="login.html">Log In</a></li>
+      </ul>
+      <div class="social-login">
+        <p>or sign in with:</p>
+        <ul class="social-icons">
+          <li><a href="#"><img src="https://newsfuseapp.files.wordpress.com/2013/12/facebook1.png" alt="Facebook"></a></li>
+          <li><a href="#"><img src="https://www.eljurista.eu/wp-content/uploads/2015/01/unnamed-e1421187130305.png" alt="Twitter"></a></li>
+          <li><a href="#"><img src="https://static.wixstatic.com/media/13e19a_40177bf64e3745d4b6d00ea3df487eb6~mv2.png/v1/fill/w_250,h_250,al_c/13e19a_40177bf64e3745d4b6d00ea3df487eb6~mv2.png" alt="Google"></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+

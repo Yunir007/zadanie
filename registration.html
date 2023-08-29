@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Telegram-style Registration Form</title>
+  <link rel="stylesheet" type="text/css" href="reg.css">
+</head>
+<script>
+    // Get this URL and Publishable Key from the Clerk Dashboard
+    const clerkFrontendApi = 'pk_[publishable_key]';
+    const frontendApi = '[your-domain].clerk.accounts.dev';
+    const version = '@latest'; // Set to appropriate version
+   
+    // Creates asynchronous script
+    const script = document.createElement('script');
+    script.setAttribute('data-clerk-frontend-api', frontendApi);
+    script.setAttribute('data-clerk-publishable-key', clerkFrontendApi);
+    script.async = true;
+    script.src = `https://${frontendApi}/npm/@clerk/clerk-js${version}/dist/clerk.browser.js`;
+   
+    // Adds listener to initialize ClerkJS after it's loaded
+    script.addEventListener('load', async function () {
+      await window.Clerk.load({
+        // Set load options here...
+      });
+    });
+    document.body.appendChild(script);
+  </script>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h1>Sign Up</h1>
+      <form id="signup-form">
+        <div class="form-group">
+          <input type="text" placeholder="Username" id="username" required>
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Password" id="password" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email" id="email" required>
+        </div>
+        <div class="form-group">
+          <button type="submit">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="registration-script.js"></script>
+</body>
+
+</html>
